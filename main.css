@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+header{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top:0;
+	padding:  15px;
+	background-color: #A00;
+}
+
+header .logo{
+	max-height: 30px;
+}
+header .logotext{
+	display: inline-block;
+	margin:0;
+	font-size: 20px;
+	color:#FFF;
+	font-size: 20px;
+}
+main{
+	margin-top: 100px;
+}
