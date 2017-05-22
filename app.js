@@ -1,4 +1,4 @@
-var api='http://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/transporte-urbano/poste/';
+var api='https://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/transporte-urbano/poste/';
 
 var state = {stops:[]};
 function getDataFromApi(stopId, callback) {
