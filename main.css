@@ -31,8 +31,6 @@ main{
 	border: 1px gray solid;
 	margin:10px;
 	padding: 20px;
-	width: 100%;
-	float: left;
 }
 main form{
 	margin: 10px;
