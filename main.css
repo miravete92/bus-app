@@ -25,13 +25,40 @@ header .logotext{
 	font-size: 20px;
 }
 main{
+	max-width: 1000px;
+	margin: auto;
 	margin-top: 100px;
 }
 .busStop{
-	border: 1px gray solid;
+	border: 1px #CCC solid;
 	margin:10px;
 	padding: 20px;
+	position: relative;
+	border-radius: 3px;
 }
 main form{
 	margin: 10px;
+}
+.busStop h2{
+	font-size: 20px;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.busStop button{
+	position: absolute;
+	right: 20px;
+	top:20px;
+	border: 2px #A00 solid;
+	color: #A00;
+	background-color: #FFF;
+	border-radius: 3px;
+}
+.busStop button:hover{
+	background-color: #A00;
+	color: #FFF;
+}
+.busStop p , .busStop h3{
+	display: inline;
+	margin-right: 100px;
+	white-space: pre;
 }
