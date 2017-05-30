@@ -15,6 +15,7 @@ function watchSubmit() {
   });
 }
 function displayData() {
+	console.log("Displaying Data");
   	var resultElement = '';
   	Object.keys(state.stops).forEach(function(item) {
   		resultElement += '<div class="busStop">';
@@ -23,7 +24,7 @@ function displayData() {
   		state.stops[item].destinos.forEach(function(bus) {
 	    resultElement += 
 		    '<div class="busTime">'+
-		      '<h3>Línea ' + bus.linea + '</h3>'+
+		      '<h3>Line ' + bus.linea + '</h3>'+
 		      '<p>' + bus.primero + '</p>'+
 		      '<p>' + bus.segundo + '</p>'+
 		    '</div>';
@@ -38,19 +39,47 @@ function displayData() {
 }
 
 function storeData(data) {
-  if (data && !data.error) {
-    state.stops["id"+data.id.substring(6)] = data; 
+  if (data) {
+  	if(!data.error)
+    	state.stops["id"+data.id.substring(6)] = data; 
+    else
+    	window.alert("Bus stop does not exist");
   }
 
   localStorage.setItem("stored",JSON.stringify(Object.keys(state.stops)));
   displayData();
 }
+function updateData(data) {
+  if (data && !data.error) {
+    state.stops["id"+data.id.substring(6)] = data; 
+  }
+  displayData();
+}
 function watchRemove(){
 	$('.js-buses').on("click", ".js-removestop", function(e) {
     e.preventDefault();
-    console.log("remove");
+    if(window.confirm("Do you want to delete this bus stop?")){
+    	console.log("remove");
+	    var stopid = parseInt($(this).closest(".busStop").find("h2").text().substring(1));
+	    delete state.stops["id"+stopid];
+	    storeData(null);
+    }
+    
+  });
+}
+function watchMoveUp(){
+	$('.js-buses').on("click", ".js-moveUp", function(e) {
+    e.preventDefault();
     var stopid = parseInt($(this).closest(".busStop").find("h2").text().substring(1));
-    delete state.stops["id"+stopid];
+    //delete state.stops["id"+stopid];
+    storeData(null);
+  });
+}
+function watchMoveDown(){
+	$('.js-buses').on("click", ".js-moveDown", function(e) {
+    e.preventDefault();
+    var stopid = parseInt($(this).closest(".busStop").find("h2").text().substring(1));
+    //delete state.stops["id"+stopid];
     storeData(null);
   });
 }
@@ -58,7 +87,7 @@ function watchRemove(){
 function updateScreen(){
 	console.log("update screen");
 	Object.keys(state.stops).forEach(function(item){
-		getDataFromApi(item.substring(2), null);
+		getDataFromApi(item.substring(2), updateData);
 	});
 	displayData();
 }
@@ -70,10 +99,9 @@ $(function(){
 
 	if (localStorage.getItem("stored") !== null)
 	{
-		console.log(JSON.parse(localStorage.getItem("stored")));
 		var keys = JSON.parse(localStorage.getItem("stored"));
 		for(var i = 0;i<keys.length;i++){
-			getDataFromApi(keys[i].substring(2), storeData);
+			getDataFromApi(keys[i].substring(2), updateData);
 		}
 	}
 });
