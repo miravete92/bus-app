@@ -1,6 +1,10 @@
+/*The api whick brings bus stop information*/
 var api='https://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/transporte-urbano/poste/';
 
+/*Stores the state of the application*/
 var state = {stops:[]};
+
+/**Calls the API and retrieves the information into a callback function*/
 function getDataFromApi(stopId, callback) {
 	console.log("Get Data call: "+stopId);
   $.getJSON(api+"tuzsa-"+stopId+".json", null)  
@@ -10,6 +14,7 @@ function getDataFromApi(stopId, callback) {
     });
 }
 
+/**Handle Find button click*/
 function watchSubmit() {
   $('.busForm').submit(function(e) {
   	console.log("submit");
@@ -18,6 +23,7 @@ function watchSubmit() {
     getDataFromApi(query, storeData);
   });
 }
+/**Updates HTML elements*/
 function displayData() {
 	console.log("Displaying Data");
   	var resultElement = '';
@@ -41,7 +47,7 @@ function displayData() {
 
   $('.js-buses').html(resultElement);
 }
-
+/**Parses the data obtained from the API, stores it in browser*/
 function storeData(data) {
   if (data) {
   	if(!data.error)
@@ -53,12 +59,16 @@ function storeData(data) {
   localStorage.setItem("stored",JSON.stringify(Object.keys(state.stops)));
   displayData();
 }
+
+/**Parses the data obtained from the API, and updates the view*/
 function updateData(data) {
   if (data && !data.error) {
     state.stops["id"+data.id.substring(6)] = data; 
   }
   displayData();
 }
+
+/**Handle Remove button click for every bus stop*/
 function watchRemove(){
 	$('.js-buses').on("click", ".js-removestop", function(e) {
     e.preventDefault();
@@ -71,23 +81,8 @@ function watchRemove(){
     
   });
 }
-function watchMoveUp(){
-	$('.js-buses').on("click", ".js-moveUp", function(e) {
-    e.preventDefault();
-    var stopid = parseInt($(this).closest(".busStop").find("h2").text().substring(1));
-    //delete state.stops["id"+stopid];
-    storeData(null);
-  });
-}
-function watchMoveDown(){
-	$('.js-buses').on("click", ".js-moveDown", function(e) {
-    e.preventDefault();
-    var stopid = parseInt($(this).closest(".busStop").find("h2").text().substring(1));
-    //delete state.stops["id"+stopid];
-    storeData(null);
-  });
-}
 
+/**Updates all the information about bus stops and displays*/
 function updateScreen(){
 	console.log("update screen");
 	Object.keys(state.stops).forEach(function(item){
@@ -95,11 +90,15 @@ function updateScreen(){
 	});
 	displayData();
 }
+
+/**On load page*/
 $(function(){
 	watchSubmit();
 	watchRemove();
+  //Every 30 seconds updates the information
 	setInterval(updateScreen, 30000);
 
+  //Retrieves the previuos state stored in browser
 	if (localStorage.getItem("stored") !== null)
 	{
 		var keys = JSON.parse(localStorage.getItem("stored"));

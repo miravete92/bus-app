@@ -5,6 +5,7 @@ Table of contents
 ---------------------
 
 + [Description](#description)
++ [Technologies used](#technologies-used)
 + [Images](#images)
 + [Try It](#try-it)
 
@@ -17,6 +18,15 @@ Hi! I'm from Zaragoza (Spain) and i use to take the bus everyday. I need a light
 There are some apps that make this job, but they need to be downloaded and installed and they don't save the recent bus stops you entered. 
 
 This app does. 
+
+
+Technologies used
+---------------------
+
+1. HTML
+2. CSS
+3. Javascript
+4. jQuery
 
 
 Images
