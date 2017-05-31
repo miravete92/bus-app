@@ -14,7 +14,10 @@ header{
 	background-color: #A00;
 	z-index: 10;
 }
-
+header .logodiv{
+	max-width: 1000px;
+	margin: auto;
+}
 header .logo{
 	max-height: 30px;
 }
@@ -43,7 +46,6 @@ main form{
 .busForm {
 	font-size: 0px;
 }
-
 .busForm input{
 	font-size: 30px;
 }
