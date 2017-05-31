@@ -29,8 +29,8 @@ function displayData() {
 	    resultElement += 
 		    '<div class="busTime">'+
 		      '<h3>Line ' + bus.linea + '</h3>'+
-		      '<p>' + bus.primero.replace("minutos.", "min") + '\'</p>'+
-		      '<p>' + bus.segundo.replace("minutos.", "min") + '\'</p>'+
+		      '<p>' + bus.primero.replace("minutos.", "min'").replace("Sin estimacin.", "Unkn.") + '</p>'+
+		      '<p>' + bus.segundo.replace("minutos.", "min'").replace("Sin estimacin.", "Unkn.") + '</p>'+
 		    '</div>';
 		});
 		resultElement += '</div>'
