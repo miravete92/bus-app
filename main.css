@@ -95,4 +95,8 @@ main form{
 	width: 33%;
 	white-space: pre;
 	font-size: 20px;
+	border-bottom: 2px #EEE solid;
+}
+.busStop p {
+	text-align: right;
 }
