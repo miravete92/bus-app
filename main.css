@@ -39,26 +39,60 @@ main{
 main form{
 	margin: 10px;
 }
+.busForm {
+	font-size: 0px;
+}
+
+.busForm input{
+	font-size: 30px;
+}
+
+.busForm input[type=number]{
+	width: 65%;
+	margin-right: 5%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.busForm input[type=submit]{
+	width: 30%;
+	box-sizing: border-box;
+	background-color: #FFF;
+	border: 2px #A00 solid;
+	color: #A00;
+	border-radius: 3px;
+	box-shadow: 0px 0px 3px #555;
+}
+.busForm input[type=submit]:hover{
+	background-color: #A00;
+	color: #FFF;
+}
+.busForm input{
+	font-size: 30px;
+}
 .busStop h2{
 	font-size: 20px;
 	margin-top: 0;
 	margin-bottom: 10px;
 }
+.busStop{
+	font-size: 0px;
+}
 .busStop button{
 	position: absolute;
-	right: 20px;
-	top:20px;
-	border: 2px #A00 solid;
+	right: 5px;
+	top:5px;
 	color: #A00;
+	border: none;
 	background-color: #FFF;
-	border-radius: 3px;
+	font-size: 30px;
 }
 .busStop button:hover{
-	background-color: #A00;
-	color: #FFF;
+	color: #D00;
 }
 .busStop p , .busStop h3{
-	display: inline;
-	margin-right: 100px;
+	display: inline-block;
+	width: 33%;
 	white-space: pre;
+	font-size: 20px;
 }

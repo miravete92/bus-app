@@ -20,7 +20,7 @@ function displayData() {
   	Object.keys(state.stops).forEach(function(item) {
   		resultElement += '<div class="busStop">';
   		resultElement += '<h2>' + state.stops[item].title +'</h2>';
-  		resultElement += '<button type="button" class="js-removestop">Remove</button>';
+  		resultElement += '<button type="button" class="js-removestop">&#x2716;</button>';
   		state.stops[item].destinos.forEach(function(bus) {
 	    resultElement += 
 		    '<div class="busTime">'+
