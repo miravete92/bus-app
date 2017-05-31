@@ -3,7 +3,11 @@ var api='https://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/transpor
 var state = {stops:[]};
 function getDataFromApi(stopId, callback) {
 	console.log("Get Data call: "+stopId);
-  $.getJSON(api+"tuzsa-"+stopId+".json", null, callback);
+  $.getJSON(api+"tuzsa-"+stopId+".json", null)  
+    .done(callback)
+    .fail(function( jqxhr, textStatus, error ) {
+      window.alert("Bus stop does not exist");
+    });
 }
 
 function watchSubmit() {
