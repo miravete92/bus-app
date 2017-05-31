@@ -8,6 +8,7 @@ Table of contents
 + [Technologies used](#technologies-used)
 + [Images](#images)
 + [Try It](#try-it)
++ [API](#api)
 
 
 Description
